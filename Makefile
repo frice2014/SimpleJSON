@@ -31,7 +31,9 @@ obj/%.o:	src/%.cpp
 clean:
 		rm -f $(OBJECTS) $(EXECUTABLE)
 
-install: all
+install: all $(PREFIX)/include/json
 	mv $(LIBRARY) $(PREFIX)/lib/json.a
-	mkdir $(PREFIX)/include/json
 	cp src/JSONValue.h src/JSON.h $(PREFIX)/include/json
+
+$(PREFIX)/include/json:
+	mkdir $(PREFIX)/include/json
